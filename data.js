@@ -16,6 +16,22 @@ let news = [
     }
 ]
 
+function cloneNews() {
+    let addNews = [...news]
+    return addNews
+}
+
+function getNews() {
+    return new Promise(resolve => {
+        let reload = setInterval(function() {
+            console.log(cloneNews())
+            resolve(cloneNews())
+        }, 3000);
+        setTimeout(() => clearInterval(reload), 10_000)
+    });
+    
+}
+
 function addCard(news) {
     const template = document
         .getElementById("news-template").content
@@ -26,3 +42,4 @@ function addCard(news) {
 }
 
 getNews().then((news) => news.forEach(article => addCard(article)))
+
