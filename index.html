@@ -3,19 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Manage Data</title>
+    <style>
+        #news-list {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        
+        body {
+            margin: 1rem;
+        }
+    </style>
 </head>
 <body>
+    <input type="button" value="Pause Refresh" onclick="stopReload()">
     <template id="news-template">
-        <article class="card">
-            <section class="card-body">
+        <section class="card col-11 m-2">
+            <article class="card-body">
                 <h3 class="card-title"></h3>
                 <p class="card-text"></p>
-            </section>
-        </article>
+            </article>
+        </section>
     </template>
 
     <div id="news-list" class="row"></div>
+
+    <div id="form">
+        <label for="newsTitle">Title:</label>
+        <input type="text" id="newsTitle" class="card-title" name="newsTitle"><br>
+        <label for="newsContent">Content:</label>
+        <input type="text" id="newsContent" class="card-text" name="newsContent"><br>
+        <input type="button" value="Submit" id="submit" onclick="post()">
+    </div>
 
     <script src="data.js"></script>
 </body>
